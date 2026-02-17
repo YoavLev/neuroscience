@@ -1,0 +1,77 @@
+{
+    "display": {
+        "fullscr": true,
+        "monitor": "testMonitor",
+        "screen": 0,
+        "background_color": [-1, -1, -1],
+        "units": "height",
+        "waitBlanking": true
+    },
+
+    "text": {
+        "font": "Arial",
+        "height": 0.032,
+        "color": [1, 1, 1],
+        "wrap_width": 0.8,
+        "scenario_height": 0.030,
+        "choice_height": 0.034,
+        "trigger_height": 0.08,
+        "fixation_height": 0.06,
+        "trigger_agree_color": [0.2, 1.0, 0.2],
+        "trigger_disagree_color": [1.0, 0.2, 0.2]
+    },
+
+    "timing": {
+        "fixation_min_sec": 0.5,
+        "fixation_max_sec": 0.8,
+        "anticipation_sec": 1.0,
+        "trigger_sec": 1.0,
+        "blank_sec": 1.0
+    },
+
+    "trials": {
+        "practice_count": 5,
+        "stimulus_file": "stimuli/stimulus_list.csv",
+        "break_every_n": 50
+    },
+
+    "eeg_markers": {
+        "trial_start": 1,
+        "fixation_onset": 10,
+        "scenario_onset": 20,
+        "choice_onset": 30,
+        "response_left": 40,
+        "response_right": 41,
+        "anticipation_ai": 50,
+        "anticipation_human": 51,
+        "trigger_agree": 100,
+        "trigger_disagree": 200,
+        "blank_onset": 70,
+        "trial_end": 9
+    },
+
+    "paths": {
+        "data_dir": "data",
+        "stimuli_dir": "stimuli",
+        "daily_dilemmas_dir": "daily_dilemmas"
+    },
+
+    "preprocess": {
+        "max_scenario_chars": 500,
+        "source_file": "eval/model_response_from_eval/all_models_eval_on_dilemmas_with_detail_by_action.csv",
+        "random_seed": 42
+    },
+
+    "consent_text": "Welcome to this study.\n\nIn this experiment you will read short everyday moral dilemmas and choose one of two possible actions. After you make your choice you will see whether an AI system or a human panel agreed or disagreed with your decision.\n\nPlease try to remain still and minimise eye movements during the experiment. Blink normally but try to blink only during breaks.\n\nYour participation is voluntary. You may withdraw at any time without penalty. All data will be stored anonymously using a random identifier.\n\nYour EEG data will be recorded throughout the session.\n\nIf you understand and agree to participate, press SPACE to continue.",
+
+    "instruction_text": "On each trial you will:\n\n1.  See a fixation cross (+) \u2014 please focus on it.\n\n2.  Read a short dilemma scenario.\n    Press SPACE when you have finished reading.\n\n3.  Choose between two actions:\n    Press  F  for the LEFT action.\n    Press  J  for the RIGHT action.\n\n4.  See whether an AI or Human judge\n    AGREED or DISAGREED with your choice.\n\n5.  A short blank screen will follow.\n\nPlease respond as naturally and honestly as you can.\n\nPress SPACE to begin.",
+
+    "end_practice_text": "Practice complete!\n\nDo you have any questions?\nAsk the experimenter now.\n\nPress SPACE to continue to the main experiment\nor ESC to quit.",
+
+    "keys": {
+        "action_left": "f",
+        "action_right": "j",
+        "continue": "space",
+        "quit": "escape"
+    }
+}
