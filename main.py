@@ -56,13 +56,17 @@ class DilemmaExp:
         "action_left", "action_right",
         "action_left_type", "action_right_type",
         "chosen_side", "chosen_action_type", "chosen_action_text",
+        "reconsider_decision", "did_change_choice",
+        "final_chosen_side", "final_chosen_action_type", "final_chosen_action_text",
         "choice_rt_sec", "reading_time_sec",
+        "reconsider_rt_sec",
         "source", "source_label",
         "is_congruent", "congruency_label",
         "fixation_onset", "fixation_duration_sec",
         "scenario_onset", "choice_onset",
         "anticipation_onset", "trigger_onset",
         "blank_onset",
+        "reconsider_onset",
         "trial_start_global", "trial_end_global",
     ]
 
@@ -228,6 +232,50 @@ class DilemmaExp:
             self.win, text="",
             font=t["font"], height=t["height"] * 0.65,
             color=[0.25, 0.25, 0.25], pos=(0, 0.46),
+        )
+
+        # -- post-feedback reconsideration screen (behavior only) --
+        kl = self.settings["keys"]["action_left"].upper()
+        kr = self.settings["keys"]["action_right"].upper()
+        self.stim_reconsider_prompt = visual.TextStim(
+            self.win,
+            text="Would you like to change your choice?",
+            font=t["font"],
+            height=t["height"],
+            color=t["color"],
+            pos=(0, 0.20),
+            wrapWidth=t["wrap_width"],
+            alignText="center",
+        )
+        self.stim_reconsider_initial = visual.TextStim(
+            self.win,
+            text="",
+            font=t["font"],
+            height=t["height"] * 0.85,
+            color=[0.8, 0.8, 0.8],
+            pos=(0, 0.10),
+            wrapWidth=t["wrap_width"],
+            alignText="center",
+        )
+        self.stim_reconsider_keep = visual.TextStim(
+            self.win,
+            text=f"[{kl}] Keep previous choice",
+            font=t["font"],
+            height=t["height"] * 0.9,
+            color=[0.7, 0.7, 0.7],
+            pos=(0, 0.02),
+            wrapWidth=t["wrap_width"],
+            alignText="center",
+        )
+        self.stim_reconsider_change = visual.TextStim(
+            self.win,
+            text=f"[{kr}] Change to the other option",
+            font=t["font"],
+            height=t["height"] * 0.9,
+            color=[0.7, 0.7, 0.7],
+            pos=(0, -0.10),
+            wrapWidth=t["wrap_width"],
+            alignText="center",
         )
 
     def _init_logging(self):
@@ -496,7 +544,7 @@ class DilemmaExp:
         return onset, side, rt
 
     def _run_anticipation(self, source: str) -> float:
-        """Source cue (1 s).  Returns onset timestamp."""
+        """Source cue (.. s).  Returns onset timestamp."""
         mrk = self.settings["eeg_markers"]
         if source == "AI":
             self.stim_anticipation.text = "AI is deciding…"
@@ -538,6 +586,36 @@ class DilemmaExp:
             draw_funcs=None,  # nothing drawn → background colour
             first_flip_marker=self.settings["eeg_markers"]["blank_onset"],
         )
+
+    def _run_reconsider(self, chosen_action_text: str) -> tuple[float, str, float]:
+        """Ask whether to keep or change the previous choice.
+
+        Behavioral phase only (no EEG marker emitted here).
+        Returns (onset, decision, rt) where decision is keep|change.
+        """
+        self.stim_reconsider_initial.text = (
+            f"Your initial choice: {chosen_action_text}"
+        )
+        draw_funcs = [
+            self.stim_reconsider_prompt.draw,
+            self.stim_reconsider_initial.draw,
+            self.stim_reconsider_keep.draw,
+            self.stim_reconsider_change.draw,
+        ]
+        for fn in draw_funcs:
+            fn()
+
+        self.win.callOnFlip(self.rt_clock.reset)
+        onset = self.win.flip()
+
+        kcfg = self.settings["keys"]
+        key = self._wait_for_key(
+            [kcfg["action_left"], kcfg["action_right"], kcfg["quit"]],
+            draw_funcs=draw_funcs,
+        )
+        rt = self.rt_clock.getTime()
+        decision = "keep" if key == kcfg["action_left"] else "change"
+        return onset, decision, rt
 
     # ------------------------------------------------------------------ #
     #  Full single trial
@@ -592,6 +670,24 @@ class DilemmaExp:
         # 6 ── blank
         blank_onset = self._run_blank()
 
+        # 7 ── post-feedback reconsideration (behavior only)
+        reconsider_onset, reconsider_decision, reconsider_rt = (
+            self._run_reconsider(chosen_text)
+        )
+
+        did_change_choice = reconsider_decision == "change"
+        if did_change_choice:
+            final_side = "right" if chosen_side == "left" else "left"
+        else:
+            final_side = chosen_side
+
+        if final_side == "left":
+            final_type = action_left_t
+            final_text = action_left
+        else:
+            final_type = action_right_t
+            final_text = action_right
+
         # Mark trial end
         self.send_eeg_marker(self.settings["eeg_markers"]["trial_end"])
         t_end = self.global_clock.getTime()
@@ -612,8 +708,14 @@ class DilemmaExp:
             "chosen_side":          chosen_side,
             "chosen_action_type":   chosen_type,
             "chosen_action_text":   chosen_text,
+            "reconsider_decision":  reconsider_decision,
+            "did_change_choice":    int(did_change_choice),
+            "final_chosen_side":    final_side,
+            "final_chosen_action_type": final_type,
+            "final_chosen_action_text": final_text,
             "choice_rt_sec":        f"{choice_rt:.6f}",
             "reading_time_sec":     f"{reading_time:.6f}",
+            "reconsider_rt_sec":    f"{reconsider_rt:.6f}",
             "source":               source,
             "source_label":         source_label,
             "is_congruent":         int(is_congruent),
@@ -625,6 +727,7 @@ class DilemmaExp:
             "anticipation_onset":   f"{antic_onset:.6f}",
             "trigger_onset":        f"{trigger_onset:.6f}",
             "blank_onset":          f"{blank_onset:.6f}",
+            "reconsider_onset":     f"{reconsider_onset:.6f}",
             "trial_start_global":   f"{t_start:.6f}",
             "trial_end_global":     f"{t_end:.6f}",
         }

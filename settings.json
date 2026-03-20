@@ -24,13 +24,13 @@
     "timing": {
         "fixation_min_sec": 0.5,
         "fixation_max_sec": 0.8,
-        "anticipation_sec": 1.0,
+        "anticipation_sec": 2.0,
         "trigger_sec": 1.0,
         "blank_sec": 1.0
     },
 
     "trials": {
-        "practice_count": 5,
+        "practice_count": 3,
         "stimulus_file": "stimuli/stimulus_list.csv",
         "break_every_n": 50
     },
@@ -64,7 +64,7 @@
 
     "consent_text": "Welcome to this study.\n\nIn this experiment you will read short everyday moral dilemmas and choose one of two possible actions. After you make your choice you will see whether an AI system or a human panel agreed or disagreed with your decision.\n\nPlease try to remain still and minimise eye movements during the experiment. Blink normally but try to blink only during breaks.\n\nYour participation is voluntary. You may withdraw at any time without penalty. All data will be stored anonymously using a random identifier.\n\nYour EEG data will be recorded throughout the session.\n\nIf you understand and agree to participate, press SPACE to continue.",
 
-    "instruction_text": "On each trial you will:\n\n1.  See a fixation cross (+) \u2014 please focus on it.\n\n2.  Read a short dilemma scenario.\n    Press SPACE when you have finished reading.\n\n3.  Choose between two actions:\n    Press  F  for the LEFT action.\n    Press  J  for the RIGHT action.\n\n4.  See whether an AI or Human judge\n    AGREED or DISAGREED with your choice.\n\n5.  A short blank screen will follow.\n\nPlease respond as naturally and honestly as you can.\n\nPress SPACE to begin.",
+    "instruction_text": "On each trial you will:\n\n1.  See a fixation cross (+) \u2014 please focus on it.\n\n2.  Read a short dilemma scenario.\n    Press SPACE when you have finished reading.\n\n3.  Choose between two actions:\n    Press  F  for the LEFT action.\n    Press  J  for the RIGHT action.\n\n4.  See whether an AI or Human judge\n    AGREED or DISAGREED with your choice.\n\n5.  A short blank screen will follow.\n\n6.  Decide whether to keep or change your choice:\n    Press  F  to KEEP your previous choice.\n    Press  J  to CHANGE to the other option.\n\nPlease respond as naturally and honestly as you can.\n\nPress SPACE to begin.",
 
     "end_practice_text": "Practice complete!\n\nDo you have any questions?\nAsk the experimenter now.\n\nPress SPACE to continue to the main experiment\nor ESC to quit.",
 
