@@ -208,6 +208,7 @@ class DilemmaExp:
             self.win, text="",
             font=t["font"], height=t["height"],
             color=[0.85, 0.85, 0.0],
+            pos=(0, 0.16),
             wrapWidth=t["wrap_width"],
         )
 
@@ -267,9 +268,10 @@ class DilemmaExp:
             wrapWidth=t["wrap_width"],
             alignText="center",
         )
+        self._reconsider_change_template = f"[{kr}] Change to: {{}}"
         self.stim_reconsider_change = visual.TextStim(
             self.win,
-            text=f"[{kr}] Change to the other option",
+            text=self._reconsider_change_template.format(""),
             font=t["font"],
             height=t["height"] * 0.9,
             color=[0.7, 0.7, 0.7],
@@ -550,7 +552,7 @@ class DilemmaExp:
             self.stim_anticipation.text = "AI is deciding…"
             marker = mrk["anticipation_ai"]
         else:
-            self.stim_anticipation.text = "Human is deciding…"
+            self.stim_anticipation.text = "Panel of People are deciding…"
             marker = mrk["anticipation_human"]
 
         return self._present_frames(
@@ -575,7 +577,10 @@ class DilemmaExp:
 
         return self._present_frames(
             self.settings["timing"]["trigger_sec"],
-            draw_funcs=[self.stim_trigger.draw],
+            draw_funcs=[
+                self.stim_anticipation.draw,
+                self.stim_trigger.draw,
+            ],
             first_flip_marker=marker,
         )
 
@@ -587,7 +592,11 @@ class DilemmaExp:
             first_flip_marker=self.settings["eeg_markers"]["blank_onset"],
         )
 
-    def _run_reconsider(self, chosen_action_text: str) -> tuple[float, str, float]:
+    def _run_reconsider(
+        self,
+        chosen_action_text: str,
+        unchosen_action_text: str,
+    ) -> tuple[float, str, float]:
         """Ask whether to keep or change the previous choice.
 
         Behavioral phase only (no EEG marker emitted here).
@@ -595,6 +604,9 @@ class DilemmaExp:
         """
         self.stim_reconsider_initial.text = (
             f"Your initial choice: {chosen_action_text}"
+        )
+        self.stim_reconsider_change.text = (
+            self._reconsider_change_template.format(unchosen_action_text)
         )
         draw_funcs = [
             self.stim_reconsider_prompt.draw,
@@ -656,9 +668,12 @@ class DilemmaExp:
         if chosen_side == "left":
             chosen_type = action_left_t
             chosen_text = action_left
+            unchosen_text = action_right
         else:
             chosen_type = action_right_t
             chosen_text = action_right
+            unchosen_text = action_left
+
 
         # 4 ── anticipation (source cue)
         antic_onset = self._run_anticipation(source)
@@ -672,7 +687,7 @@ class DilemmaExp:
 
         # 7 ── post-feedback reconsideration (behavior only)
         reconsider_onset, reconsider_decision, reconsider_rt = (
-            self._run_reconsider(chosen_text)
+            self._run_reconsider(chosen_text, unchosen_text)
         )
 
         did_change_choice = reconsider_decision == "change"
