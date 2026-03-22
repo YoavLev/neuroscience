@@ -39,6 +39,7 @@ from pathlib import Path
 
 import numpy as np
 from psychopy import core, data, event, logging, visual
+from triggers import setParallelData
 
 
 # ====================================================================== #
@@ -47,6 +48,11 @@ from psychopy import core, data, event, logging, visual
 
 class DilemmaExp:
     """High-precision PsychoPy experiment for EEG moral-dilemma paradigm."""
+
+    # Maximum trial-block duration (from first trial start).
+    MAX_TRIAL_BLOCK_SEC = 12 * 60
+    # Hard-coded probability that feedback is incongruent with participant choice.
+    INCONGRUENT_PROB = 0.40
 
     # Column order for the output CSV (defined once, used everywhere).
     CSV_FIELDS = [
@@ -293,19 +299,11 @@ class DilemmaExp:
     def send_eeg_marker(self, val: int) -> None:
         """Send an event marker to the EEG acquisition system.
 
-        **This is a placeholder.**  Replace the body with the call
-        appropriate for your hardware, for example::
-
-            from psychopy import parallel
-            parallel.setData(val)          # parallel-port trigger
-
-            serial_port.write(bytes([val]))  # serial trigger
-
-            lsl_outlet.push_sample([val])    # Lab Streaming Layer
-
-        The function is registered via ``win.callOnFlip()`` so it
-        executes at the exact moment of the screen refresh.
+        Uses ``setParallelData`` from ``triggers.py``. This function is
+        registered via ``win.callOnFlip()`` so marker transmission and
+        timestamping happen at the exact screen refresh.
         """
+        setParallelData(val)
         ts = self.global_clock.getTime()
         self.marker_log.append({"marker": val, "global_time": f"{ts:.6f}"})
         logging.data(f"EEG_MARKER  {val:>3d}  @  {ts:.6f} s")
@@ -429,6 +427,14 @@ class DilemmaExp:
     def show_goodbye(self):
         txt = (
             "The experiment is now complete.\n\n"
+            "Thank you for your participation!\n\n"
+            "Press SPACE to exit."
+        )
+        self._show_text_wait(txt)
+
+    def show_time_limit_reached(self):
+        txt = (
+            "The 12-minute trial period is complete.\n\n"
             "Thank you for your participation!\n\n"
             "Press SPACE to exit."
         )
@@ -648,7 +654,6 @@ class DilemmaExp:
         action_left_t   = trial["action_left_type"]
         action_right_t  = trial["action_right_type"]
         source          = trial["source"]
-        source_label    = trial["source_label"]
 
         # Mark trial start
         self.send_eeg_marker(self.settings["eeg_markers"]["trial_start"])
@@ -668,10 +673,12 @@ class DilemmaExp:
         if chosen_side == "left":
             chosen_type = action_left_t
             chosen_text = action_left
+            unchosen_type = action_right_t
             unchosen_text = action_right
         else:
             chosen_type = action_right_t
             chosen_text = action_right
+            unchosen_type = action_left_t
             unchosen_text = action_left
 
 
@@ -679,6 +686,9 @@ class DilemmaExp:
         antic_onset = self._run_anticipation(source)
 
         # 5 ── trigger (ERP event)
+        # Ignore trial-provided source_label and hard-code 40% incongruent feedback.
+        force_incongruent = np.random.random() < self.INCONGRUENT_PROB
+        source_label = unchosen_type if force_incongruent else chosen_type
         is_congruent = chosen_type == source_label
         trigger_onset = self._run_trigger(is_congruent)
 
@@ -819,7 +829,25 @@ class DilemmaExp:
             )
 
             # 7 ── trial loop
+            trial_block_start: float | None = None
+            reached_time_limit = False
             for trial_num, trial_data in enumerate(trials, start=1):
+                now = self.global_clock.getTime()
+                if trial_block_start is None:
+                    trial_block_start = now
+                    logging.info(
+                        "Trial block timer started "
+                        f"(limit {self.MAX_TRIAL_BLOCK_SEC} s)."
+                    )
+                elif (now - trial_block_start) >= self.MAX_TRIAL_BLOCK_SEC:
+                    reached_time_limit = True
+                    logging.info(
+                        "Time limit reached before trial "
+                        f"{trial_num} start (elapsed "
+                        f"{now - trial_block_start:.3f} s)."
+                    )
+                    break
+
                 # optional rest break
                 if (
                     self.mode == "experiment"
@@ -832,12 +860,24 @@ class DilemmaExp:
                 self.trial_results.append(result)
                 self._append_csv_row(result)
 
-            # 8 ── post-practice bridge
-            if self.mode == "practice":
-                self.show_end_practice()
+                elapsed = self.global_clock.getTime() - trial_block_start
+                if elapsed >= self.MAX_TRIAL_BLOCK_SEC:
+                    reached_time_limit = True
+                    logging.info(
+                        "Time limit reached after trial "
+                        f"{trial_num} (elapsed {elapsed:.3f} s)."
+                    )
+                    break
 
-            # 9 ── goodbye
-            self.show_goodbye()
+            # 8 ── post-practice bridge
+            if reached_time_limit:
+                self.show_time_limit_reached()
+            else:
+                if self.mode == "practice":
+                    self.show_end_practice()
+
+                # 9 ── goodbye
+                self.show_goodbye()
 
         except Exception:
             logging.error("Experiment error", exc_info=True)
