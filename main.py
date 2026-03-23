@@ -448,7 +448,7 @@ class DilemmaExp:
         """Return ``'practice'`` or ``'experiment'``."""
         txt = (
             "Select a mode:\n\n"
-            "  Press  P   for Practice  (5 trials)\n\n"
+            "  Press  P   for Practice  (3 trials)\n\n"
             "  Press  E   for Experiment (full run)\n\n"
             "  Press  ESC to quit"
         )
@@ -550,6 +550,14 @@ class DilemmaExp:
             )
 
         return onset, side, rt
+
+    def _run_post_choice_fixation(self) -> float:
+        """1-second fixation cross between choice and anticipation."""
+        return self._present_frames(
+            2.0,
+            draw_funcs=[self.stim_fixation.draw],
+            first_flip_marker=None,
+        )
 
     def _run_anticipation(self, source: str) -> float:
         """Source cue (.. s).  Returns onset timestamp."""
@@ -682,20 +690,23 @@ class DilemmaExp:
             unchosen_text = action_left
 
 
-        # 4 ── anticipation (source cue)
+        # 4 ── post-choice spacing fixation
+        self._run_post_choice_fixation()
+
+        # 5 ── anticipation (source cue)
         antic_onset = self._run_anticipation(source)
 
-        # 5 ── trigger (ERP event)
+        # 6 ── trigger (ERP event)
         # Ignore trial-provided source_label and hard-code 40% incongruent feedback.
         force_incongruent = np.random.random() < self.INCONGRUENT_PROB
         source_label = unchosen_type if force_incongruent else chosen_type
         is_congruent = chosen_type == source_label
         trigger_onset = self._run_trigger(is_congruent)
 
-        # 6 ── blank
+        # 7 ── blank
         blank_onset = self._run_blank()
 
-        # 7 ── post-feedback reconsideration (behavior only)
+        # 8 ── post-feedback reconsideration (behavior only)
         reconsider_onset, reconsider_decision, reconsider_rt = (
             self._run_reconsider(chosen_text, unchosen_text)
         )
@@ -856,6 +867,7 @@ class DilemmaExp:
                 ):
                     self.show_break(trial_num - 1, n_trials)
 
+                # Keep practice and experiment phase structure identical.
                 result = self.run_trial(trial_data, trial_num, n_trials)
                 self.trial_results.append(result)
                 self._append_csv_row(result)

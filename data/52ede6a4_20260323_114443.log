@@ -1,0 +1,85 @@
+10.1185 	WARNING 	Font Manager failed to load file /System/Library/PrivateFrameworks/FontServices.framework/Resources/Reserved/PingFangUI.ttc
+10.1840 	WARNING 	Font Manager failed to load file /System/Library/PrivateFrameworks/FontServices.framework/Resources/Reserved/PingFangUI.ttc
+10.1917 	WARNING 	psychopy.parallel has been imported on a Mac (which doesn't have a parallel port?)
+10.2017 	WARNING 	psychopy.parallel has been imported but (1) no parallel port driver could be found or accessed on Windows or (2) PsychoPy is run on a Mac (without parallel-port support for now)
+10.2087 	WARNING 	User requested fullscreen with size [800 600], but screen is actually [1512, 982]. Using actual size
+11.5389 	WARNING 	Couldn't measure a consistent frame rate!
+  - Is your graphics card set to sync to vertical blank?
+  - Are you running other processes on your computer?
+
+13.2903 	WARNING 	Couldn't measure a consistent frame rate!
+  - Is your graphics card set to sync to vertical blank?
+  - Are you running other processes on your computer?
+
+13.2903 	WARNING 	Could not measure refresh rate — assuming 60 Hz.
+13.3525 	INFO 	Participant : 52ede6a4
+13.3525 	INFO 	Session     : 20260323_114443
+13.3659 	WARNING 	t of last frame was 75.76ms (=1/13)
+13.3659 	EXP 	unnamed TextStim: height = 0.032
+13.3659 	EXP 	unnamed TextStim: height = 0.032
+13.3659 	EXP 	unnamed TextStim: height = 0.032
+13.3659 	EXP 	unnamed TextStim: text = 'Welcome to this study.\n\nIn this experiment you will read short everyday moral dilemmas and choose one of two possible actions. After you make your choice you will see whether an AI system or a human panel agreed or disagreed with your decision.\n\nPlease try to remain still and minimise eye movements during the experiment.\n\nYour participation is voluntary. You may withdraw at any time without penalty. All data will be stored anonymously using a random identifier.\n\nYour EEG data will be recorded throughout the session.\n\nIf you understand and agree to participate, press SPACE to continue.'
+15.0619 	DATA 	Keypress: space
+15.0648 	WARNING 	t of last frame was 23.61ms (=1/42)
+15.0753 	EXP 	unnamed TextStim: height = 0.032
+15.0753 	EXP 	unnamed TextStim: height = 0.032
+15.0753 	EXP 	unnamed TextStim: height = 0.032
+15.0753 	EXP 	unnamed TextStim: text = 'Select a mode:\n\n  Press  P   for Practice  (5 trials)\n\n  Press  E   for Experiment (full run)\n\n  Press  ESC to quit'
+16.8110 	DATA 	Keypress: e
+16.8436 	WARNING 	t of last frame was 35.38ms (=1/28)
+16.8436 	EXP 	unnamed TextStim: height = 0.032
+16.8436 	EXP 	unnamed TextStim: height = 0.032
+16.8436 	EXP 	unnamed TextStim: height = 0.032
+16.8436 	EXP 	unnamed TextStim: text = 'On each trial you will:\n\n1.  See a fixation cross (+) — please focus on it.\n\n2.  Read a short dilemma scenario.\n    Press SPACE when you have finished reading.\n\n3.  Choose between two actions:\n    Press  F  for the LEFT action.\n    Press  J  for the RIGHT action.\n\n4.  See whether an AI or Human judge\n    AGREED or DISAGREED with your choice.\n\n5.  A short blank screen will follow.\n\n6.  Decide whether to keep or change your choice:\n    Press  F  to KEEP your previous choice.\n    Press  J  to CHANGE to the other option.\n\nPlease respond as naturally and honestly as you can.\n\nPress SPACE to begin.'
+18.2215 	DATA 	Keypress: space
+18.2960 	EXP 	Imported stimuli/stimulus_list.csv as conditions, 1359 conditions, 12 params
+18.2996 	EXP 	Created sequence: random, trialTypes=1359, nReps=1, seed=None
+18.3617 	INFO 	Starting 'experiment' with 1359 trials.
+18.3618 	EXP 	New trial (rep=0, index=0): OrderedDict([('trial_id', 747), ('dilemma_idx', 13384), ('scenario', "John has been friends with Sarah since childhood and they have a close bond. John's girlfriend, Lisa, feels uncomfortable with their relationship and asks John to distance himself from Sarah. Should John continue his friendship with Sarah at the risk of hurting Lisa's feelings or should he distance himself from Sarah to maintain his relationship with Lisa?"), ('action_left', 'Distance from Sarah'), ('action_right', 'Maintain Friendship with Sarah'), ('action_left_type', 'not_to_do'), ('action_right_type', 'to_do'), ('source', 'Human'), ('source_label', 'to_do'), ('gpt4_label', 'to_do'), ('human_label', 'to_do'), ('topic_group', 'close_relationship')])
+18.3618 	INFO 	Trial block timer started (limit 720 s).
+18.3618 	DATA 	EEG_MARKER    1  @  8.159360 s
+18.3670 	DATA 	EEG_MARKER   10  @  8.164600 s
+18.3670 	WARNING 	t of last frame was 147.53ms (=1/6)
+18.7040 	DATA 	EEG_MARKER   20  @  8.501574 s
+18.7039 	EXP 	unnamed TextStim: height = 0.03
+18.7039 	EXP 	unnamed TextStim: height = 0.03
+18.7039 	EXP 	unnamed TextStim: height = 0.03
+18.7039 	EXP 	unnamed TextStim: text = "John has been friends with Sarah since childhood and they have a close bond. John's girlfriend, Lisa, feels uncomfortable with their relationship and asks John to distance himself from Sarah. Should John continue his friendship with Sarah at the risk of hurting Lisa's feelings or should he distance himself from Sarah to maintain his relationship with Lisa?"
+27.7859 	DATA 	Keypress: space
+27.8133 	DATA 	EEG_MARKER   30  @  17.610829 s
+27.8133 	WARNING 	Multiple dropped frames have occurred - I'll stop bothering you about them!
+27.8132 	EXP 	unnamed TextStim: height = 0.034
+27.8132 	EXP 	unnamed TextStim: height = 0.034
+27.8132 	EXP 	unnamed TextStim: height = 0.034
+27.8132 	EXP 	unnamed TextStim: text = 'Distance from Sarah'
+27.8132 	EXP 	unnamed TextStim: height = 0.034
+27.8132 	EXP 	unnamed TextStim: height = 0.034
+27.8132 	EXP 	unnamed TextStim: height = 0.034
+27.8132 	EXP 	unnamed TextStim: text = 'Maintain Friendship with Sarah'
+39.4641 	DATA 	Keypress: f
+39.4674 	DATA 	EEG_MARKER   40  @  29.264924 s
+39.9760 	DATA 	EEG_MARKER   51  @  29.773544 s
+39.9759 	EXP 	unnamed TextStim: height = 0.032
+39.9759 	EXP 	unnamed TextStim: height = 0.032
+39.9759 	EXP 	unnamed TextStim: height = 0.032
+39.9759 	EXP 	unnamed TextStim: text = 'Panel of People are deciding…'
+40.9840 	DATA 	EEG_MARKER  100  @  30.781504 s
+40.9839 	EXP 	unnamed TextStim: height = 0.08
+40.9839 	EXP 	unnamed TextStim: height = 0.08
+40.9839 	EXP 	unnamed TextStim: height = 0.08
+40.9839 	EXP 	unnamed TextStim: text = 'AGREE'
+40.9839 	EXP 	unnamed TextStim: foreColor = [0.2, 1.0, 0.2]
+41.9797 	DATA 	EEG_MARKER   70  @  31.777218 s
+43.0018 	EXP 	unnamed TextStim: height = 0.0272
+43.0018 	EXP 	unnamed TextStim: height = 0.0272
+43.0018 	EXP 	unnamed TextStim: height = 0.0272
+43.0018 	EXP 	unnamed TextStim: text = 'Your initial choice: Distance from Sarah'
+43.0018 	EXP 	unnamed TextStim: height = 0.028800000000000003
+43.0018 	EXP 	unnamed TextStim: height = 0.028800000000000003
+43.0018 	EXP 	unnamed TextStim: height = 0.028800000000000003
+43.0018 	EXP 	unnamed TextStim: text = '[J] Change to: Maintain Friendship with Sarah'
+46.1470 	DATA 	Keypress: escape
+46.1587 	INFO 	Marker log → data/52ede6a4_20260323_114443_markers.csv
+46.1587 	INFO 	Experiment cleanup — shutting down.
+46.3866 	INFO 	Marker log → data/52ede6a4_20260323_114443_markers.csv
+46.3866 	INFO 	Experiment cleanup — shutting down.
