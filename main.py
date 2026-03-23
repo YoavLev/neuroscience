@@ -554,8 +554,8 @@ class DilemmaExp:
     def _run_post_choice_fixation(self) -> float:
         """1-second fixation cross between choice and anticipation."""
         return self._present_frames(
-            2.0,
-            draw_funcs=[self.stim_fixation.draw],
+            0.2,
+            draw_funcs=None,
             first_flip_marker=None,
         )
 

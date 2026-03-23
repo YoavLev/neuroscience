@@ -1,0 +1,165 @@
+8.9020 	WARNING 	Font Manager failed to load file /System/Library/PrivateFrameworks/FontServices.framework/Resources/Reserved/PingFangUI.ttc
+8.9351 	WARNING 	Font Manager failed to load file /System/Library/PrivateFrameworks/FontServices.framework/Resources/Reserved/PingFangUI.ttc
+8.9414 	WARNING 	psychopy.parallel has been imported on a Mac (which doesn't have a parallel port?)
+8.9516 	WARNING 	psychopy.parallel has been imported but (1) no parallel port driver could be found or accessed on Windows or (2) PsychoPy is run on a Mac (without parallel-port support for now)
+8.9590 	WARNING 	User requested fullscreen with size [800 600], but screen is actually [1512, 982]. Using actual size
+10.2169 	WARNING 	Couldn't measure a consistent frame rate!
+  - Is your graphics card set to sync to vertical blank?
+  - Are you running other processes on your computer?
+
+11.9694 	WARNING 	Couldn't measure a consistent frame rate!
+  - Is your graphics card set to sync to vertical blank?
+  - Are you running other processes on your computer?
+
+11.9694 	WARNING 	Could not measure refresh rate — assuming 60 Hz.
+12.0342 	INFO 	Participant : d7966b52
+12.0342 	INFO 	Session     : 20260323_114956
+12.0471 	WARNING 	t of last frame was 77.90ms (=1/12)
+12.0471 	EXP 	unnamed TextStim: height = 0.032
+12.0471 	EXP 	unnamed TextStim: height = 0.032
+12.0471 	EXP 	unnamed TextStim: height = 0.032
+12.0471 	EXP 	unnamed TextStim: text = 'Welcome to this study.\n\nIn this experiment you will read short everyday moral dilemmas and choose one of two possible actions. After you make your choice you will see whether an AI system or a human panel agreed or disagreed with your decision.\n\nPlease try to remain still and minimise eye movements during the experiment.\n\nYour participation is voluntary. You may withdraw at any time without penalty. All data will be stored anonymously using a random identifier.\n\nYour EEG data will be recorded throughout the session.\n\nIf you understand and agree to participate, press SPACE to continue.'
+22.8124 	DATA 	Keypress: space
+22.8243 	WARNING 	t of last frame was 30.09ms (=1/33)
+22.8243 	EXP 	unnamed TextStim: height = 0.032
+22.8243 	EXP 	unnamed TextStim: height = 0.032
+22.8243 	EXP 	unnamed TextStim: height = 0.032
+22.8243 	EXP 	unnamed TextStim: text = 'Select a mode:\n\n  Press  P   for Practice  (3 trials)\n\n  Press  E   for Experiment (full run)\n\n  Press  ESC to quit'
+24.2606 	DATA 	Keypress: e
+24.2929 	WARNING 	t of last frame was 34.53ms (=1/28)
+24.2929 	EXP 	unnamed TextStim: height = 0.032
+24.2929 	EXP 	unnamed TextStim: height = 0.032
+24.2929 	EXP 	unnamed TextStim: height = 0.032
+24.2929 	EXP 	unnamed TextStim: text = 'On each trial you will:\n\n1.  See a fixation cross (+) — please focus on it.\n\n2.  Read a short dilemma scenario.\n    Press SPACE when you have finished reading.\n\n3.  Choose between two actions:\n    Press  F  for the LEFT action.\n    Press  J  for the RIGHT action.\n\n4.  See whether an AI or Human judge\n    AGREED or DISAGREED with your choice.\n\n5.  A short blank screen will follow.\n\n6.  Decide whether to keep or change your choice:\n    Press  F  to KEEP your previous choice.\n    Press  J  to CHANGE to the other option.\n\nPlease respond as naturally and honestly as you can.\n\nPress SPACE to begin.'
+25.1139 	DATA 	Keypress: space
+25.1885 	EXP 	Imported stimuli/stimulus_list.csv as conditions, 1359 conditions, 12 params
+25.1926 	EXP 	Created sequence: random, trialTypes=1359, nReps=1, seed=None
+25.2551 	INFO 	Starting 'experiment' with 1359 trials.
+25.2551 	EXP 	New trial (rep=0, index=0): OrderedDict([('trial_id', 532), ('dilemma_idx', 31883), ('scenario', "Your friend has been struggling with a severe addiction and you've been trying to help them recover. You've realized that being around them is emotionally draining you and affecting your mental health. Should you continue to be there for your friend at the expense of your own well-being?"), ('action_left', 'Stop Supporting'), ('action_right', 'Continue Supporting'), ('action_left_type', 'not_to_do'), ('action_right_type', 'to_do'), ('source', 'AI'), ('source_label', 'not_to_do'), ('gpt4_label', 'not_to_do'), ('human_label', 'not_to_do'), ('topic_group', 'issue_crime_addiction')])
+25.2551 	INFO 	Trial block timer started (limit 720 s).
+25.2552 	DATA 	EEG_MARKER    1  @  16.302699 s
+25.2611 	DATA 	EEG_MARKER   10  @  16.308592 s
+25.2610 	WARNING 	t of last frame was 150.75ms (=1/6)
+25.5505 	DATA 	EEG_MARKER   20  @  16.597999 s
+25.5505 	WARNING 	Multiple dropped frames have occurred - I'll stop bothering you about them!
+25.5504 	EXP 	unnamed TextStim: height = 0.03
+25.5504 	EXP 	unnamed TextStim: height = 0.03
+25.5504 	EXP 	unnamed TextStim: height = 0.03
+25.5504 	EXP 	unnamed TextStim: text = "Your friend has been struggling with a severe addiction and you've been trying to help them recover. You've realized that being around them is emotionally draining you and affecting your mental health. Should you continue to be there for your friend at the expense of your own well-being?"
+27.1287 	DATA 	Keypress: space
+27.1518 	DATA 	EEG_MARKER   30  @  18.199281 s
+27.1517 	EXP 	unnamed TextStim: height = 0.034
+27.1517 	EXP 	unnamed TextStim: height = 0.034
+27.1517 	EXP 	unnamed TextStim: height = 0.034
+27.1517 	EXP 	unnamed TextStim: text = 'Stop Supporting'
+27.1517 	EXP 	unnamed TextStim: height = 0.034
+27.1517 	EXP 	unnamed TextStim: height = 0.034
+27.1517 	EXP 	unnamed TextStim: height = 0.034
+27.1517 	EXP 	unnamed TextStim: text = 'Continue Supporting'
+28.2720 	DATA 	Keypress: j
+28.2728 	DATA 	EEG_MARKER   41  @  19.320287 s
+28.3868 	DATA 	EEG_MARKER   50  @  19.434358 s
+28.3868 	EXP 	unnamed TextStim: height = 0.032
+28.3868 	EXP 	unnamed TextStim: height = 0.032
+28.3868 	EXP 	unnamed TextStim: height = 0.032
+28.3868 	EXP 	unnamed TextStim: text = 'AI is deciding…'
+29.3867 	DATA 	EEG_MARKER  100  @  20.434195 s
+29.3866 	EXP 	unnamed TextStim: height = 0.08
+29.3866 	EXP 	unnamed TextStim: height = 0.08
+29.3866 	EXP 	unnamed TextStim: height = 0.08
+29.3866 	EXP 	unnamed TextStim: text = 'AGREE'
+29.3866 	EXP 	unnamed TextStim: foreColor = [0.2, 1.0, 0.2]
+30.3737 	DATA 	EEG_MARKER   70  @  21.421254 s
+31.3811 	EXP 	unnamed TextStim: height = 0.0272
+31.3811 	EXP 	unnamed TextStim: height = 0.0272
+31.3811 	EXP 	unnamed TextStim: height = 0.0272
+31.3811 	EXP 	unnamed TextStim: text = 'Your initial choice: Continue Supporting'
+31.3811 	EXP 	unnamed TextStim: height = 0.028800000000000003
+31.3811 	EXP 	unnamed TextStim: height = 0.028800000000000003
+31.3811 	EXP 	unnamed TextStim: height = 0.028800000000000003
+31.3811 	EXP 	unnamed TextStim: text = '[J] Change to: Stop Supporting'
+34.2197 	DATA 	Keypress: f
+34.2242 	DATA 	EEG_MARKER    9  @  25.271753 s
+34.2249 	EXP 	New trial (rep=0, index=1): OrderedDict([('trial_id', 1342), ('dilemma_idx', 28674), ('scenario', "You are an employee at a small business where every team member's contribution is critical to the operation. Despite being sick, you know your absence will cause significant inconvenience and potential loss to the business. Should you go to work and potentially spread your illness to others, or stay at home and potentially harm the business?"), ('action_left', 'Going to work sick'), ('action_right', 'Staying at home'), ('action_left_type', 'to_do'), ('action_right_type', 'not_to_do'), ('source', 'Human'), ('source_label', 'not_to_do'), ('gpt4_label', 'not_to_do'), ('human_label', 'not_to_do'), ('topic_group', 'workplace')])
+34.2250 	DATA 	EEG_MARKER    1  @  25.272506 s
+34.2331 	DATA 	EEG_MARKER   10  @  25.280586 s
+34.5460 	DATA 	EEG_MARKER   20  @  25.593473 s
+34.5459 	EXP 	unnamed TextStim: height = 0.03
+34.5459 	EXP 	unnamed TextStim: height = 0.03
+34.5459 	EXP 	unnamed TextStim: height = 0.03
+34.5459 	EXP 	unnamed TextStim: text = "You are an employee at a small business where every team member's contribution is critical to the operation. Despite being sick, you know your absence will cause significant inconvenience and potential loss to the business. Should you go to work and potentially spread your illness to others, or stay at home and potentially harm the business?"
+35.1683 	DATA 	Keypress: space
+35.1928 	DATA 	EEG_MARKER   30  @  26.240286 s
+35.1927 	EXP 	unnamed TextStim: height = 0.034
+35.1927 	EXP 	unnamed TextStim: height = 0.034
+35.1927 	EXP 	unnamed TextStim: height = 0.034
+35.1927 	EXP 	unnamed TextStim: text = 'Going to work sick'
+35.1927 	EXP 	unnamed TextStim: height = 0.034
+35.1927 	EXP 	unnamed TextStim: height = 0.034
+35.1927 	EXP 	unnamed TextStim: height = 0.034
+35.1927 	EXP 	unnamed TextStim: text = 'Staying at home'
+36.7669 	DATA 	Keypress: f
+36.7709 	DATA 	EEG_MARKER   40  @  27.818438 s
+36.8810 	DATA 	EEG_MARKER   51  @  27.928562 s
+36.8810 	EXP 	unnamed TextStim: height = 0.032
+36.8810 	EXP 	unnamed TextStim: height = 0.032
+36.8810 	EXP 	unnamed TextStim: height = 0.032
+36.8810 	EXP 	unnamed TextStim: text = 'Panel of People are deciding…'
+37.8762 	DATA 	EEG_MARKER  100  @  28.923721 s
+37.8761 	EXP 	unnamed TextStim: text = 'AGREE'
+37.8761 	EXP 	unnamed TextStim: foreColor = [0.2, 1.0, 0.2]
+38.8826 	DATA 	EEG_MARKER   70  @  29.930057 s
+39.8872 	EXP 	unnamed TextStim: height = 0.0272
+39.8872 	EXP 	unnamed TextStim: height = 0.0272
+39.8872 	EXP 	unnamed TextStim: height = 0.0272
+39.8872 	EXP 	unnamed TextStim: text = 'Your initial choice: Going to work sick'
+39.8872 	EXP 	unnamed TextStim: height = 0.028800000000000003
+39.8872 	EXP 	unnamed TextStim: height = 0.028800000000000003
+39.8872 	EXP 	unnamed TextStim: height = 0.028800000000000003
+39.8872 	EXP 	unnamed TextStim: text = '[J] Change to: Staying at home'
+67.5243 	DATA 	Keypress: space
+68.8645 	DATA 	Keypress: f
+68.8654 	DATA 	EEG_MARKER    9  @  59.912935 s
+68.8665 	EXP 	New trial (rep=0, index=2): OrderedDict([('trial_id', 104), ('dilemma_idx', 45893), ('scenario', 'While driving with your dog untethered in the car, you realize that your actions could potentially harm your pet if you were to get into an accident. You wonder if your desire to have your dog unrestrained for his comfort outweighs the potential risk to his safety. Should you continue to let your dog ride without a seat belt, risking his safety, or should you make him wear one, possibly causing him discomfort?'), ('action_left', 'Continue to let your dog ride without a seatbelt'), ('action_right', 'Make your dog wear a seatbelt'), ('action_left_type', 'to_do'), ('action_right_type', 'not_to_do'), ('source', 'AI'), ('source_label', 'not_to_do'), ('gpt4_label', 'not_to_do'), ('human_label', 'not_to_do'), ('topic_group', 'issue_wildlife_human_environment')])
+68.8666 	DATA 	EEG_MARKER    1  @  59.914113 s
+68.8701 	DATA 	EEG_MARKER   10  @  59.917663 s
+69.1708 	DATA 	EEG_MARKER   20  @  60.218350 s
+69.1708 	EXP 	unnamed TextStim: height = 0.03
+69.1708 	EXP 	unnamed TextStim: height = 0.03
+69.1708 	EXP 	unnamed TextStim: height = 0.03
+69.1708 	EXP 	unnamed TextStim: text = 'While driving with your dog untethered in the car, you realize that your actions could potentially harm your pet if you were to get into an accident. You wonder if your desire to have your dog unrestrained for his comfort outweighs the potential risk to his safety. Should you continue to let your dog ride without a seat belt, risking his safety, or should you make him wear one, possibly causing him discomfort?'
+70.5014 	DATA 	Keypress: j
+71.2924 	DATA 	Keypress: space
+71.3146 	DATA 	EEG_MARKER   30  @  62.362114 s
+71.3145 	EXP 	unnamed TextStim: height = 0.034
+71.3145 	EXP 	unnamed TextStim: height = 0.034
+71.3145 	EXP 	unnamed TextStim: height = 0.034
+71.3145 	EXP 	unnamed TextStim: text = 'Continue to let your dog ride without a seatbelt'
+71.3145 	EXP 	unnamed TextStim: height = 0.034
+71.3145 	EXP 	unnamed TextStim: height = 0.034
+71.3145 	EXP 	unnamed TextStim: height = 0.034
+71.3145 	EXP 	unnamed TextStim: text = 'Make your dog wear a seatbelt'
+72.5604 	DATA 	Keypress: f
+72.5613 	DATA 	EEG_MARKER   40  @  63.608819 s
+72.6753 	DATA 	EEG_MARKER   50  @  63.722779 s
+72.6752 	EXP 	unnamed TextStim: height = 0.032
+72.6752 	EXP 	unnamed TextStim: height = 0.032
+72.6752 	EXP 	unnamed TextStim: height = 0.032
+72.6752 	EXP 	unnamed TextStim: text = 'AI is deciding…'
+73.6696 	DATA 	EEG_MARKER  100  @  64.717117 s
+73.6695 	EXP 	unnamed TextStim: text = 'AGREE'
+73.6695 	EXP 	unnamed TextStim: foreColor = [0.2, 1.0, 0.2]
+74.6707 	DATA 	EEG_MARKER   70  @  65.718195 s
+75.6977 	EXP 	unnamed TextStim: height = 0.0272
+75.6977 	EXP 	unnamed TextStim: height = 0.0272
+75.6977 	EXP 	unnamed TextStim: height = 0.0272
+75.6977 	EXP 	unnamed TextStim: text = 'Your initial choice: Continue to let your dog ride without a seatbelt'
+75.6977 	EXP 	unnamed TextStim: height = 0.028800000000000003
+75.6977 	EXP 	unnamed TextStim: height = 0.028800000000000003
+75.6977 	EXP 	unnamed TextStim: height = 0.028800000000000003
+75.6977 	EXP 	unnamed TextStim: text = '[J] Change to: Make your dog wear a seatbelt'
+76.1396 	DATA 	Keypress: escape
+76.1410 	INFO 	Marker log → data/d7966b52_20260323_114956_markers.csv
+76.1410 	INFO 	Experiment cleanup — shutting down.
+76.3029 	INFO 	Marker log → data/d7966b52_20260323_114956_markers.csv
+76.3029 	INFO 	Experiment cleanup — shutting down.
